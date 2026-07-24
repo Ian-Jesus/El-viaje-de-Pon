@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://pna8uivww3px"]
+
+[ext_resource type="Script" uid="uid://bj2uecvi8jisx" path="res://Scripts/bala.gd" id="1_dllt4"]
+[ext_resource type="Texture2D" uid="uid://1a5p7whtywb2" path="res://Actores/icon.svg" id="2_dllt4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5sfa"]
+
+[node name="bala" type="CharacterBody2D" unique_id=234226471]
+collision_layer = 8
+script = ExtResource("1_dllt4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1558668657]
+modulate = Color(1, 0.25490198, 0.25490198, 1)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_dllt4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=681749564]
+shape = SubResource("RectangleShape2D_q5sfa")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=2106793329]
+enable_node_path = NodePath("")
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

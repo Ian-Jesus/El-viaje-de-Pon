@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bfoyeoguerq2j"]
+
+[ext_resource type="PackedScene" uid="uid://boxdg0ck3mt3x" path="res://Actores/invocador.tscn" id="1_5sfon"]
+[ext_resource type="PackedScene" uid="uid://bfr1qv2bbm1we" path="res://Actores/pon.tscn" id="2_bqhdr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5sfa"]
+size = Vector2(82, 1500)
+
+[node name="Mundo" type="Node2D" unique_id=269353516]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1657138821]
+
+[node name="BarrasLaterales" type="Node2D" parent="." unique_id=908635753]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BarrasLaterales" unique_id=623353794 groups=["muro"]]
+position = Vector2(-425, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BarrasLaterales/StaticBody2D" unique_id=1248048820]
+shape = SubResource("RectangleShape2D_q5sfa")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="BarrasLaterales" unique_id=1590550076 groups=["muro"]]
+position = Vector2(425, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BarrasLaterales/StaticBody2D2" unique_id=1457937986]
+shape = SubResource("RectangleShape2D_q5sfa")
+
+[node name="invocador" parent="." unique_id=1772469373 instance=ExtResource("1_5sfon")]
+position = Vector2(0, -600)
+
+[node name="Pon" parent="." unique_id=1275403122 instance=ExtResource("2_bqhdr")]
+position = Vector2(0, 424)
