@@ -16,6 +16,16 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 64
 text = "0"
 
+[node name="Tiempo" type="Label" parent="." unique_id=990080853]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -116.0
+offset_bottom = 88.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 64
+text = "0"
+
 [node name="Mensaje" type="Label" parent="." unique_id=1224859830]
 custom_minimum_size = Vector2(50, 50)
 anchors_preset = 14
@@ -34,4 +44,9 @@ autowrap_mode = 3
 
 [node name="InicioTimer" type="Timer" parent="." unique_id=702841241]
 
+[node name="TiempoJuego" type="Timer" parent="." unique_id=951096571]
+wait_time = 180.0
+autostart = true
+
 [connection signal="timeout" from="InicioTimer" to="." method="_on_inicio_timer_timeout"]
+[connection signal="timeout" from="TiempoJuego" to="." method="_on_tiempo_juego_timeout"]
