@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cpox8dn7qf13c"]
+
+[ext_resource type="Texture2D" uid="uid://c1jtvjna3cix3" path="res://Sprites/PonOVni.png" id="1_ga12t"]
+[ext_resource type="Script" uid="uid://53hcdwaiy34q" path="res://Scripts/enemigo_2.gd" id="1_qsk1r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obaep"]
+size = Vector2(180, 170)
+
+[node name="Enemigo2" type="CharacterBody2D" unique_id=372033936]
+script = ExtResource("1_qsk1r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=91302955]
+shape = SubResource("RectangleShape2D_obaep")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1242693768]
+modulate = Color(1, 0, 0.023529412, 1)
+texture = ExtResource("1_ga12t")

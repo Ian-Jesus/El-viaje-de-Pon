@@ -23,7 +23,6 @@ Global="*uid://dcs27hx2nlqto"
 
 window/size/viewport_width=768
 window/size/viewport_height=1024
-window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [file_customization]

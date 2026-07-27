@@ -1,11 +1,11 @@
 extends Node
-
-# Cuando dos meteoritos chocan y rompes uno te destruye
 const max_punt = "res://max_punt.dat"
+signal inmunidadEnemigo2
 signal enemigo_destruido(_puntos:int)
 signal pon_daño
 signal derrota
 signal victoria
+signal aumentarDificultad(nivelDificultad:int)
 var puntuacion:int = 0
 var datos_max:Dictionary={
 	"max":0

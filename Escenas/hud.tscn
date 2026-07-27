@@ -48,5 +48,9 @@ autowrap_mode = 3
 wait_time = 180.0
 autostart = true
 
+[node name="PeligroT" type="Timer" parent="." unique_id=1070822580]
+wait_time = 2.0
+
 [connection signal="timeout" from="InicioTimer" to="." method="_on_inicio_timer_timeout"]
 [connection signal="timeout" from="TiempoJuego" to="." method="_on_tiempo_juego_timeout"]
+[connection signal="timeout" from="PeligroT" to="." method="_on_peligro_t_timeout"]
