@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://b71q1rtiudscd"]
+
+[ext_resource type="Script" uid="uid://ckoiffb6wcmpj" path="res://Scripts/pantalla_victoria.gd" id="1_ervxt"]
+
+[node name="PantallaVictoria" type="Control" unique_id=1688883834]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ervxt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1743495917]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -17.5
+offset_right = 4.0
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Victoria" type="Label" parent="VBoxContainer" unique_id=1214697745]
+layout_mode = 2
+theme_override_font_sizes/font_size = 140
+text = "Victoria"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Puntuacion_max" type="Label" parent="VBoxContainer" unique_id=1082503026]
+layout_mode = 2
+theme_override_font_sizes/font_size = 56
+text = "Puntuación Maxima"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="max" type="Label" parent="VBoxContainer" unique_id=758263463]
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "1000000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Puntuacion" type="Label" parent="VBoxContainer" unique_id=752634312]
+layout_mode = 2
+theme_override_font_sizes/font_size = 56
+text = "Puntuación"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="n" type="Label" parent="VBoxContainer" unique_id=1589461537]
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "1000000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1590555491]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="volverAlMenu" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=879923732]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 56
+text = "⬅"
+icon_alignment = 1
+
+[node name="volverAIntentar" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=511401939]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 56
+text = "🗘"
+icon_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/volverAlMenu" to="." method="_on_volver_al_menu_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/volverAIntentar" to="." method="_on_volver_a_intentar_pressed"]

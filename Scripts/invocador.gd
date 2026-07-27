@@ -1,7 +1,6 @@
 extends CharacterBody2D
 const enemigo = preload("uid://yyuxqkxovco7")
-func _ready() -> void:
-	$demoraInvocacion.start()
+@onready var demorai: Timer = $demoraInvocacion
 
 func invocar(_direccion_aleatoria):
 	var e = enemigo.instantiate()
@@ -12,4 +11,8 @@ func invocar(_direccion_aleatoria):
 func _on_demora_invocacion_timeout() -> void:
 	var direccion_aleatoria = randf_range((PI/2)+0.5,(PI*3/2)-0.5)
 	invocar(direccion_aleatoria)
-	$demoraInvocacion.start()
+	demorai.start()
+
+
+func _on_inv_timeout() -> void:
+	demorai.start()

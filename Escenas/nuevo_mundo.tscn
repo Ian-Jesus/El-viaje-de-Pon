@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://36p6jvu502qk"]
+
+[ext_resource type="PackedScene" uid="uid://boxdg0ck3mt3x" path="res://Actores/invocador.tscn" id="1_q441t"]
+[ext_resource type="PackedScene" uid="uid://bfr1qv2bbm1we" path="res://Actores/pon.tscn" id="2_qeco3"]
+[ext_resource type="PackedScene" uid="uid://cijiqea28tuva" path="res://Escenas/hud.tscn" id="3_qeco3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obaep"]
+size = Vector2(100, 2000)
+
+[node name="nuevoMundo" type="Node2D" unique_id=735072059]
+
+[node name="muros" type="Node2D" parent="." unique_id=1983636526]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="muros" unique_id=28408849]
+position = Vector2(-50, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="muros/StaticBody2D" unique_id=1367742868]
+position = Vector2(0, 500)
+shape = SubResource("RectangleShape2D_obaep")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="muros" unique_id=662018847]
+position = Vector2(818, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="muros/StaticBody2D2" unique_id=1928425155]
+position = Vector2(0, 500)
+shape = SubResource("RectangleShape2D_obaep")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=999651959]
+anchor_mode = 0
+
+[node name="invocador" parent="." unique_id=1772469373 instance=ExtResource("1_q441t")]
+position = Vector2(385, -141)
+
+[node name="Pon" parent="." unique_id=1275403122 instance=ExtResource("2_qeco3")]
+position = Vector2(397, 928)
+
+[node name="HUD" parent="." unique_id=1808341901 instance=ExtResource("3_qeco3")]

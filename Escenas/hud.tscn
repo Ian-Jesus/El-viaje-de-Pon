@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cijiqea28tuva"]
+
+[ext_resource type="Script" uid="uid://d2154fnlg7abp" path="res://Scripts/hud.gd" id="1_4nel0"]
+
+[node name="HUD" type="CanvasLayer" unique_id=1808341901]
+script = ExtResource("1_4nel0")
+
+[node name="Puntuacion" type="Label" parent="." unique_id=2035269953]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 88.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "0"
+
+[node name="Mensaje" type="Label" parent="." unique_id=1224859830]
+custom_minimum_size = Vector2(50, 50)
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -55.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "texto"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="InicioTimer" type="Timer" parent="." unique_id=702841241]
+
+[connection signal="timeout" from="InicioTimer" to="." method="_on_inicio_timer_timeout"]

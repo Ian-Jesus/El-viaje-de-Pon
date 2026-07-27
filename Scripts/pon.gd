@@ -20,3 +20,8 @@ func disparo():
 func _physics_process(_delta):
 	movimiento()
 	move_and_slide()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	Global.pon_daño.emit()
+	body.call_deferred("queue_free")

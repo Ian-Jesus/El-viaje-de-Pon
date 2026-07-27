@@ -31,7 +31,8 @@ window/stretch/mode="canvas_items"
 folder_colors={
 "res://Actores/": "purple",
 "res://Escenas/": "red",
-"res://Scripts/": "green"
+"res://Scripts/": "green",
+"res://Sprites/": "blue"
 }
 
 [input]

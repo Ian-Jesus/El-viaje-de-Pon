@@ -1,30 +1,31 @@
 [gd_scene format=3 uid="uid://yyuxqkxovco7"]
 
 [ext_resource type="Script" uid="uid://d2iv81kiinjfw" path="res://Scripts/enemigo.gd" id="1_l5t4n"]
-[ext_resource type="Texture2D" uid="uid://1a5p7whtywb2" path="res://Actores/icon.svg" id="2_5qf7h"]
+[ext_resource type="Texture2D" uid="uid://ckohfmo7tdfm2" path="res://Sprites/meteorito.png" id="2_l5t4n"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a6ofe"]
-size = Vector2(90, 90)
+[sub_resource type="CircleShape2D" id="CircleShape2D_obaep"]
+radius = 89.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5sfa"]
-size = Vector2(100, 100)
+[sub_resource type="CircleShape2D" id="CircleShape2D_dm7cm"]
+radius = 78.0
 
 [node name="enemigo" type="CharacterBody2D" unique_id=1772469373 groups=["enemigo"]]
+scale = Vector2(0.8, 0.8)
 collision_mask = 12
 script = ExtResource("1_l5t4n")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2122996198]
-shape = SubResource("RectangleShape2D_a6ofe")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=271893212]
-modulate = Color(1, 0, 0, 1)
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("2_5qf7h")
 
 [node name="areaDeteccion" type="Area2D" parent="." unique_id=1364154516]
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areaDeteccion" unique_id=954117597]
-shape = SubResource("RectangleShape2D_q5sfa")
+shape = SubResource("CircleShape2D_obaep")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2122996198]
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CircleShape2D_dm7cm")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=271893212]
+scale = Vector2(0.6999999, 0.6999999)
+texture = ExtResource("2_l5t4n")
 
 [connection signal="body_entered" from="areaDeteccion" to="." method="_on_area_deteccion_body_entered"]
