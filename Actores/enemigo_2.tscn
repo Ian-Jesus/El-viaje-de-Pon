@@ -6,7 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obaep"]
 size = Vector2(180, 170)
 
-[node name="Enemigo2" type="CharacterBody2D" unique_id=372033936]
+[node name="Enemigo2" type="CharacterBody2D" unique_id=372033936 groups=["enemigo2"]]
+collision_mask = 12
 script = ExtResource("1_qsk1r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=91302955]
@@ -15,3 +16,11 @@ shape = SubResource("RectangleShape2D_obaep")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1242693768]
 modulate = Color(1, 0, 0.023529412, 1)
 texture = ExtResource("1_ga12t")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=142022598]
+position = Vector2(0, 100)
+
+[node name="dispararT" type="Timer" parent="." unique_id=656514386]
+wait_time = 2.5
+
+[connection signal="timeout" from="dispararT" to="." method="_on_disparar_t_timeout"]

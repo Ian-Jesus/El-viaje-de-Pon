@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://pt5bc7kdwwm7"]
+
+[ext_resource type="Texture2D" uid="uid://ckohfmo7tdfm2" path="res://Sprites/meteorito.png" id="1_8gusc"]
+[ext_resource type="Script" uid="uid://cqkby7xuer22v" path="res://Scripts/bala_enemigo_2.gd" id="1_fyfj1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g04yl"]
+radius = 20.0
+
+[node name="BalaEnemigo2" type="CharacterBody2D" unique_id=261845327]
+script = ExtResource("1_fyfj1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=731739587]
+shape = SubResource("CircleShape2D_g04yl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1888028409]
+modulate = Color(0.56023896, 0.018582309, 9.62615e-08, 1)
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("1_8gusc")

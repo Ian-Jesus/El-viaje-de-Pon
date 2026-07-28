@@ -8,6 +8,7 @@ extends CanvasLayer
 @onready var puntuacion: Label = $Puntuacion
 @onready var tiempoE: Label = $Tiempo
 #Variables
+var segAumentaNivel = [10,20,60,120,180]
 var nivel = 0
 var cont = 0
 var punt = 0
@@ -33,12 +34,12 @@ func _cronometro():
 	var segundos: int = int(tiempo_restante) % 60
 	# Actualiza el Label usando formato con ceros a la izquierda
 	tiempoE.text = "%02d:%02d" % [minutos, segundos]
-	if int(tiempo_restante) in [20,60,120,180] and unavez:
+	if int(tiempo_restante) in segAumentaNivel and unavez:
 		nivel+=1
 		Global.aumentarDificultad.emit(nivel)
 		_mostrar_dificultad_aumentada()
 		unavez = false
-	elif int(tiempo_restante-5) in [20,60,120,180] and not(unavez):
+	elif int(tiempo_restante-5) in segAumentaNivel and not(unavez):
 		unavez = true
 
 func _mostrar_dificultad_aumentada():
