@@ -2,6 +2,8 @@ extends CharacterBody2D
 var velocidad = 750
 
 func iniciar(_position):
+	Global.derrota.connect(Callable(self, "destruir"))
+	Global.victoria.connect(Callable(self, "destruir"))
 	position = _position
 	velocity = Vector2(0, -velocidad)
 

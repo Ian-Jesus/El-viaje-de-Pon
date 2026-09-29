@@ -4,15 +4,15 @@ const bala2 = preload("uid://pt5bc7kdwwm7")
 @onready var dispararT: Timer = $dispararT
 @onready var areaDeteccion: Area2D = $areaDeteccion
 var contar:int = 1
+var oneshot:bool=true
+
 func _ready() -> void:
-	Global.inmunidadEnemigo2.connect(Callable(self,"cambio_de_patron"))
 	Global.derrota.connect(Callable(self, "destruir"))
 	Global.victoria.connect(Callable(self, "destruir"))
 
 func cambio_de_patron():
 	velocity = Vector2(150,0)
-	areaDeteccion.set_collision_mask_value(4,true) # para que la bala entre al area de deteccion
-	set_collision_layer_value(1,true) # como el marker al parecer solo apunta hacia arriba, hacemos que colisione con la nave que lo dispara y luego vaya al objetivo xd
+	areaDeteccion.set_collision_mask_value(1,true) # para detectar la colision con la bala
 	dispararT.start()
 
 func disparo():
@@ -31,13 +31,13 @@ func _physics_process(delta):
 		if collision.get_collider().has_method("hit"):
 			collision.get_collider().hit()
 
-
 func _on_disparar_t_timeout() -> void:
 	disparo()
 	dispararT.start()
 
 func destruir():
 	queue_free()
+
 func _on_area_deteccion_body_entered(body: Node2D) -> void:
 	var vidaEnemiga = 5
 	if contar < vidaEnemiga:
@@ -49,3 +49,8 @@ func _on_area_deteccion_body_entered(body: Node2D) -> void:
 			body.destruir()
 		Global.enemigo_destruido.emit(50)
 		destruir()
+
+func _on_area_deteccion_area_shape_exited(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	if area.is_in_group("inmune") and oneshot:
+		oneshot=false
+		cambio_de_patron()

@@ -10,13 +10,13 @@ size = Vector2(180, 180)
 size = Vector2(180, 170)
 
 [node name="Enemigo2" type="CharacterBody2D" unique_id=372033936 groups=["enemigo2"]]
-collision_layer = 128
+collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_qsk1r")
 
 [node name="areaDeteccion" type="Area2D" parent="." unique_id=1615595]
 collision_layer = 0
-collision_mask = 0
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areaDeteccion" unique_id=1569007277]
 shape = SubResource("RectangleShape2D_7asr5")
@@ -35,5 +35,6 @@ rotation = 3.1415927
 [node name="dispararT" type="Timer" parent="." unique_id=656514386]
 wait_time = 2.5
 
+[connection signal="area_shape_exited" from="areaDeteccion" to="." method="_on_area_deteccion_area_shape_exited"]
 [connection signal="body_entered" from="areaDeteccion" to="." method="_on_area_deteccion_body_entered"]
 [connection signal="timeout" from="dispararT" to="." method="_on_disparar_t_timeout"]

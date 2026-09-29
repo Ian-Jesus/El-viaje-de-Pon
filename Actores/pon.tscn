@@ -3,16 +3,22 @@
 [ext_resource type="Script" uid="uid://g3ic7maln2co" path="res://Scripts/pon.gd" id="1_4aqyl"]
 [ext_resource type="Texture2D" uid="uid://c1jtvjna3cix3" path="res://Sprites/PonOVni.png" id="2_luh3v"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5sfa"]
-size = Vector2(75, 70)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obaep"]
 size = Vector2(100, 90)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5sfa"]
+size = Vector2(75, 70)
+
 [node name="Pon" type="CharacterBody2D" unique_id=1275403122 groups=["jugador"]]
-collision_layer = 2
-collision_mask = 5
+collision_mask = 4
 script = ExtResource("1_4aqyl")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1451987269]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1843141271]
+shape = SubResource("RectangleShape2D_obaep")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=950693881]
 position = Vector2(0, 10)
@@ -24,10 +30,5 @@ texture = ExtResource("2_luh3v")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=254452638]
 position = Vector2(0, -65)
-
-[node name="Area2D" type="Area2D" parent="." unique_id=1451987269]
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1843141271]
-shape = SubResource("RectangleShape2D_obaep")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

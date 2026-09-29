@@ -11,12 +11,12 @@ radius = 78.0
 
 [node name="enemigo" type="CharacterBody2D" unique_id=1772469373 groups=["enemigo"]]
 scale = Vector2(0.8, 0.8)
-collision_layer = 128
-collision_mask = 12
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("1_l5t4n")
 
 [node name="areaDeteccion" type="Area2D" parent="." unique_id=1364154516]
-collision_mask = 8
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areaDeteccion" unique_id=954117597]
 shape = SubResource("CircleShape2D_obaep")

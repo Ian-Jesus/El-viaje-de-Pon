@@ -3,13 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://boxdg0ck3mt3x" path="res://Actores/invocador.tscn" id="1_q441t"]
 [ext_resource type="PackedScene" uid="uid://bfr1qv2bbm1we" path="res://Actores/pon.tscn" id="2_qeco3"]
 [ext_resource type="PackedScene" uid="uid://cijiqea28tuva" path="res://Escenas/hud.tscn" id="3_qeco3"]
-[ext_resource type="Script" uid="uid://c23fg3m8a7ak3" path="res://Scripts/area_inmune.gd" id="4_eia5m"]
+[ext_resource type="PackedScene" uid="uid://dh5jvlvmxv0ei" path="res://Escenas/area_inmune.tscn" id="4_eia5m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obaep"]
 size = Vector2(100, 2000)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g04yl"]
-size = Vector2(1000, 386)
 
 [node name="nuevoMundo" type="Node2D" unique_id=735072059]
 
@@ -37,21 +34,12 @@ shape = SubResource("RectangleShape2D_obaep")
 anchor_mode = 0
 
 [node name="invocador" parent="." unique_id=1772469373 instance=ExtResource("1_q441t")]
-position = Vector2(391, -163)
+position = Vector2(391, -90)
 
 [node name="Pon" parent="." unique_id=1275403122 instance=ExtResource("2_qeco3")]
 position = Vector2(397, 928)
 
 [node name="HUD" parent="." unique_id=1808341901 instance=ExtResource("3_qeco3")]
 
-[node name="AreaInmune" type="Area2D" parent="." unique_id=1476181728]
+[node name="AreaInmune" parent="." unique_id=1190852971 instance=ExtResource("4_eia5m")]
 position = Vector2(385, 0)
-collision_layer = 0
-collision_mask = 128
-script = ExtResource("4_eia5m")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaInmune" unique_id=1329997230]
-position = Vector2(0, -93)
-shape = SubResource("RectangleShape2D_g04yl")
-
-[connection signal="body_exited" from="AreaInmune" to="AreaInmune" method="_on_body_exited"]

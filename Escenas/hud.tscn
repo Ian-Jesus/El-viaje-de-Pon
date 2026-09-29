@@ -45,7 +45,7 @@ autowrap_mode = 3
 [node name="InicioTimer" type="Timer" parent="." unique_id=702841241]
 
 [node name="TiempoJuego" type="Timer" parent="." unique_id=951096571]
-wait_time = 5.0
+wait_time = 40.0
 autostart = true
 
 [node name="PeligroT" type="Timer" parent="." unique_id=1070822580]

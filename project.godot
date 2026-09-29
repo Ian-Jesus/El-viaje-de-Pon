@@ -13,7 +13,7 @@ config_version=5
 config/name="Pon-Nave"
 run/main_scene="uid://bns1q41lv38yg"
 config/features=PackedStringArray("4.7", "Forward Plus")
-config/icon="res://Actores/icon.svg"
+config/icon="res://Sprites/icon.svg"
 
 [autoload]
 

@@ -1,6 +1,5 @@
 extends Node
 const max_punt = "res://max_punt.dat"
-signal inmunidadEnemigo2
 signal enemigo_destruido(_puntos:int)
 signal pon_daño
 signal derrota

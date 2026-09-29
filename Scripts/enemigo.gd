@@ -2,13 +2,10 @@ extends CharacterBody2D
 var velocidad = 300
 func _ready() -> void:
 	Global.pon_daño.connect(Callable(self,"_daño_pon"))
-	Global.derrota.connect(Callable(self,"_derrota"))
-	Global.victoria.connect(Callable(self,"_victoria"))
+	Global.derrota.connect(Callable(self,"destruir"))
+	Global.victoria.connect(Callable(self,"destruir"))
 
-func _victoria():
-	queue_free()
-
-func _derrota():
+func destruir():
 	queue_free()
 
 func iniciar(_position,_rotation):
@@ -22,9 +19,6 @@ func _physics_process(delta):
 		velocity = velocity.bounce(collision.get_normal())
 		if collision.get_collider().has_method("hit"):
 			collision.get_collider().hit()
-
-func destruir():
-	queue_free()
 
 func _on_area_deteccion_body_entered(body: Node2D) -> void:
 	Global.enemigo_destruido.emit(10)
