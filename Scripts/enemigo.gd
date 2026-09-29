@@ -23,10 +23,13 @@ func _physics_process(delta):
 		if collision.get_collider().has_method("hit"):
 			collision.get_collider().hit()
 
+func destruir():
+	queue_free()
 
 func _on_area_deteccion_body_entered(body: Node2D) -> void:
 	Global.enemigo_destruido.emit(10)
 	# Dudo un poco que sea de buena programacion destruir los dos objetos desde el script de uno... 
-	body.queue_free()
-	queue_free()
+	if body.has_method("destruir"):
+			body.destruir()
+	destruir()
 	

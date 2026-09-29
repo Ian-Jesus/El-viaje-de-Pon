@@ -5,6 +5,9 @@ func iniciar(_position):
 	position = _position
 	velocity = Vector2(0, -velocidad)
 
+func destruir():
+	queue_free()
+
 func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
 	if collision:

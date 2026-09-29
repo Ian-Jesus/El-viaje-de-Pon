@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b71q1rtiudscd"]
 
-[ext_resource type="Script" uid="uid://ckoiffb6wcmpj" path="res://Scripts/pantalla_victoria.gd" id="1_ervxt"]
+[ext_resource type="Script" uid="uid://ckoiffb6wcmpj" path="res://Scripts/UI/pantalla_victoria.gd" id="1_ervxt"]
+[ext_resource type="Texture2D" uid="uid://7kbah4yxp040" path="res://Sprites/reiniciar.png" id="2_1wbdo"]
 
 [node name="PantallaVictoria" type="Control" unique_id=1688883834]
 custom_minimum_size = Vector2(100, 100)
@@ -78,8 +79,9 @@ custom_minimum_size = Vector2(100, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 56
-text = "🗘"
+icon = ExtResource("2_1wbdo")
 icon_alignment = 1
+expand_icon = true
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/volverAlMenu" to="." method="_on_volver_al_menu_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/volverAIntentar" to="." method="_on_volver_a_intentar_pressed"]
