@@ -1,7 +1,6 @@
 extends CharacterBody2D
 var velocidad = 300
 func _ready() -> void:
-	Global.pon_daño.connect(Callable(self,"_daño_pon"))
 	Global.derrota.connect(Callable(self,"destruir"))
 	Global.victoria.connect(Callable(self,"destruir"))
 

@@ -1,6 +1,7 @@
 # PonNave
 Mini Juego de Pon y Pin: te mueves con una nave de izquierda a derecha disparando a meteoritos y/o enemigos
 
+
 ## Errores actuales
  No hay errores
 
@@ -27,11 +28,14 @@ Las áreas son para detectar daño y los personajes en si colisiones sin daño
 **inmune:** AreaInmuneE2
 
 
-## Siguientes Ideas
+## Siguientes push
 - Crear un enemigo3 el cual sera el jefe:
 	Pienso en una nave que aparezca unas cuantas veces en el nivel
 	demo y ataque en linea recta con un laser y luego desaparezca.
 	El enemigo posiblemente sea el ¿doctor medusa? (creo que asi se llamaba haha)
+#### Avance:
+El enemigo ya esta agregado, el script unicamente controla un timer para cambiar de estados (desde un estado nexo) al Dr Medusa.
+Aun no estan programadas las acciones es lo siguiente en la lista.
 
 - Hacer varios niveles para ir introduciendo las mecanicas:
 	1. Aprender a destruir meteoritos (mision: destruir x meteoritos) dificultad 0
@@ -40,6 +44,8 @@ Las áreas son para detectar daño y los personajes en si colisiones sin daño
 	(Aparece el Jefe, no peleas con el) 
 	4. Pelea con el jefe pero escapa dificultad 2
 	5. Pelea con el jefe dificultad 2
+#### Avance:
+Aun no lo empece
 
 ## Informacion Importante (posibles correcciones si estoy motivado)
 **El HUD esta manejando logica de juego!!!!**

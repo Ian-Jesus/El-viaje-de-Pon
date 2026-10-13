@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bjteyx1ut0pop"]
+
+[ext_resource type="Script" uid="uid://dj6l8qljk0ph" path="res://Scripts/dr_medusa.gd" id="1_ufglm"]
+[ext_resource type="Texture2D" uid="uid://c1jtvjna3cix3" path="res://Sprites/PonOVni.png" id="2_yyt5b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7asr5"]
+size = Vector2(180, 180)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obaep"]
+size = Vector2(180, 170)
+
+[node name="DrMedusa" type="CharacterBody2D" unique_id=372033936 groups=["enemigo2"]]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_ufglm")
+
+[node name="areaDeteccion" type="Area2D" parent="." unique_id=1615595]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areaDeteccion" unique_id=1569007277]
+shape = SubResource("RectangleShape2D_7asr5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=91302955]
+shape = SubResource("RectangleShape2D_obaep")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1242693768]
+modulate = Color(0, 1, 0.023529412, 1)
+texture = ExtResource("2_yyt5b")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=142022598]
+position = Vector2(0, 100)
+rotation = 3.1415927
+
+[node name="dispararT" type="Timer" parent="." unique_id=656514386]
+one_shot = true
+
+[connection signal="area_shape_exited" from="areaDeteccion" to="." method="_on_area_deteccion_area_shape_exited"]
+[connection signal="body_entered" from="areaDeteccion" to="." method="_on_area_deteccion_body_entered"]
+[connection signal="timeout" from="dispararT" to="." method="_on_disparar_t_timeout"]

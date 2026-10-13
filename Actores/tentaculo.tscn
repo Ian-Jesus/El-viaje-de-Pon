@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c3yapkk2aa71y"]
+
+[ext_resource type="Texture2D" uid="uid://djl4v0bfdqec" path="res://Sprites/calamardo.png" id="1_qsrir"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7asr5"]
+size = Vector2(150, 1000)
+
+[node name="Tentanculo" type="Node2D" unique_id=1623238120]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=71737169]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=887624451]
+shape = SubResource("RectangleShape2D_7asr5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1366824884]
+modulate = Color(0, 1, 0.023529412, 1)
+scale = Vector2(0.2, 0.8)
+texture = ExtResource("1_qsrir")
