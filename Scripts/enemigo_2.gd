@@ -5,6 +5,7 @@ const bala2 = preload("uid://pt5bc7kdwwm7")
 @onready var areaDeteccion: Area2D = $areaDeteccion
 var contar:int = 1
 var oneshot:bool=true
+var vidaEnemiga = 5
 
 func _ready() -> void:
 	Global.derrota.connect(Callable(self, "destruir"))
@@ -39,7 +40,6 @@ func destruir():
 	queue_free()
 
 func _on_area_deteccion_body_entered(body: Node2D) -> void:
-	var vidaEnemiga = 5
 	if contar < vidaEnemiga:
 		contar += 1
 		body.queue_free()

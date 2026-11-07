@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dhbhm184tfcns"]
+
+[ext_resource type="Texture2D" uid="uid://c1jtvjna3cix3" path="res://Sprites/PonOVni.png" id="1_h8fwf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4nbd"]
+size = Vector2(180, 170)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_agv3f"]
+size = Vector2(180, 180)
+
+[node name="DrMedusaP" type="CharacterBody2D" unique_id=336181469]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1762595701]
+modulate = Color(0.1764706, 0.8039216, 0.18039216, 1)
+texture = ExtResource("1_h8fwf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=559445820]
+shape = SubResource("RectangleShape2D_s4nbd")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=374515732]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=676310424]
+shape = SubResource("RectangleShape2D_agv3f")
