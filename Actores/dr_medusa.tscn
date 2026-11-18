@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://bjteyx1ut0pop"]
 
 [ext_resource type="Script" uid="uid://dj6l8qljk0ph" path="res://Scripts/dr_medusa.gd" id="1_ufglm"]
-[ext_resource type="Texture2D" uid="uid://c1jtvjna3cix3" path="res://Sprites/PonOVni.png" id="2_yyt5b"]
+[ext_resource type="Texture2D" uid="uid://17hrretnhp6a" path="res://Sprites/prototipos/drMedusa.png" id="2_ufglm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7asr5"]
-size = Vector2(180, 180)
+size = Vector2(160, 180)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obaep"]
-size = Vector2(180, 170)
+size = Vector2(160, 170)
 
 [node name="DrMedusa" type="CharacterBody2D" unique_id=372033936 groups=["enemigo2"]]
 collision_layer = 2
@@ -25,8 +25,9 @@ shape = SubResource("RectangleShape2D_7asr5")
 shape = SubResource("RectangleShape2D_obaep")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1242693768]
-modulate = Color(0, 1, 0.023529412, 1)
-texture = ExtResource("2_yyt5b")
+position = Vector2(-10, 10.000001)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_ufglm")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=142022598]
 position = Vector2(0, 100)

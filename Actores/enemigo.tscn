@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://yyuxqkxovco7"]
 
 [ext_resource type="Script" uid="uid://d2iv81kiinjfw" path="res://Scripts/enemigo.gd" id="1_l5t4n"]
-[ext_resource type="Texture2D" uid="uid://ckohfmo7tdfm2" path="res://Sprites/meteorito.png" id="2_l5t4n"]
+[ext_resource type="Texture2D" uid="uid://g5ymgryevyjm" path="res://Sprites/prototipos/meteorito.png" id="2_l5t4n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_obaep"]
 radius = 89.0
@@ -15,6 +15,11 @@ collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_l5t4n")
 
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=271893212]
+position = Vector2(-6.25, 7.5)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_l5t4n")
+
 [node name="areaDeteccion" type="Area2D" parent="." unique_id=1364154516]
 collision_layer = 0
 
@@ -24,9 +29,5 @@ shape = SubResource("CircleShape2D_obaep")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2122996198]
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("CircleShape2D_dm7cm")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=271893212]
-scale = Vector2(0.6999999, 0.6999999)
-texture = ExtResource("2_l5t4n")
 
 [connection signal="body_entered" from="areaDeteccion" to="." method="_on_area_deteccion_body_entered"]

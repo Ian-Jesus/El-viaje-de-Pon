@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://cpox8dn7qf13c"]
 
-[ext_resource type="Texture2D" uid="uid://c1jtvjna3cix3" path="res://Sprites/PonOVni.png" id="1_ga12t"]
 [ext_resource type="Script" uid="uid://53hcdwaiy34q" path="res://Scripts/enemigo_2.gd" id="1_qsk1r"]
+[ext_resource type="Texture2D" uid="uid://bmm0q7ej5yhw7" path="res://Sprites/prototipos/robotMedusa.png" id="2_qsk1r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7asr5"]
-size = Vector2(180, 180)
+size = Vector2(150, 190)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obaep"]
-size = Vector2(180, 170)
+size = Vector2(150, 180)
 
 [node name="Enemigo2" type="CharacterBody2D" unique_id=372033936 groups=["enemigo2"]]
 collision_layer = 2
@@ -25,8 +25,9 @@ shape = SubResource("RectangleShape2D_7asr5")
 shape = SubResource("RectangleShape2D_obaep")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1242693768]
-modulate = Color(1, 0, 0.023529412, 1)
-texture = ExtResource("1_ga12t")
+position = Vector2(-5, 8)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_qsk1r")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=142022598]
 position = Vector2(0, 100)

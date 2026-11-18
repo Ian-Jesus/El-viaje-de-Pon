@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://pna8uivww3px"]
 
 [ext_resource type="Script" uid="uid://bj2uecvi8jisx" path="res://Scripts/bala.gd" id="1_dllt4"]
-[ext_resource type="Texture2D" uid="uid://k2y4h6p6kma3" path="res://Sprites/bala.png" id="2_dllt4"]
+[ext_resource type="Texture2D" uid="uid://c3nbhdxk1tqc6" path="res://Sprites/prototipos/ataque.png" id="2_dllt4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q5sfa"]
-size = Vector2(14, 37)
+size = Vector2(27, 37)
 
 [node name="bala" type="CharacterBody2D" unique_id=234226471]
 collision_mask = 0
 script = ExtResource("1_dllt4")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1558668657]
-scale = Vector2(0.15, 0.15)
+scale = Vector2(0.09, 0.09)
 texture = ExtResource("2_dllt4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=681749564]

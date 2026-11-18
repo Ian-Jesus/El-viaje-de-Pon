@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b88d4fto8o06x" path="res://Scripts/tentaculo.gd" id="1_05e0r"]
 [ext_resource type="Texture2D" uid="uid://djl4v0bfdqec" path="res://Sprites/calamardo.png" id="1_qsrir"]
+[ext_resource type="Texture2D" uid="uid://dviv0e6jxq7b2" path="res://Sprites/prototipos/tentaculo.png" id="3_uqgc3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7asr5"]
 size = Vector2(150, 1000)
@@ -16,8 +17,12 @@ collision_layer = 0
 shape = SubResource("RectangleShape2D_7asr5")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1366824884]
+visible = false
 modulate = Color(0, 1, 0.023529412, 1)
 scale = Vector2(0.2, 0.8)
 texture = ExtResource("1_qsrir")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1382096067]
+texture = ExtResource("3_uqgc3")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
