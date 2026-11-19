@@ -2,12 +2,54 @@
 
 [ext_resource type="Script" uid="uid://53hcdwaiy34q" path="res://Scripts/enemigo_2.gd" id="1_qsk1r"]
 [ext_resource type="Texture2D" uid="uid://bmm0q7ej5yhw7" path="res://Sprites/prototipos/robotMedusa.png" id="2_qsk1r"]
+[ext_resource type="Texture2D" uid="uid://dmpuw6tmq1ia3" path="res://Sprites/prototipos/robotMedusaAtaque0.png" id="3_ius0v"]
+[ext_resource type="Texture2D" uid="uid://pgw7sm3l4t5q" path="res://Sprites/prototipos/robotMedusaAtaque1.png" id="4_ysnm7"]
+[ext_resource type="Texture2D" uid="uid://b00rm5c0swlac" path="res://Sprites/prototipos/robotMedusaDañado.png" id="5_w06uu"]
+[ext_resource type="Texture2D" uid="uid://dyn02lrm3okmf" path="res://Sprites/prototipos/robotMedusaInvensible.png" id="5_ysnm7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7asr5"]
 size = Vector2(150, 190)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obaep"]
 size = Vector2(150, 180)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7asr5"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("3_ius0v")
+}, {
+"duration": 3.0,
+"texture": ExtResource("4_ysnm7")
+}],
+"loop": 0,
+"name": &"ataque",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_w06uu")
+}],
+"loop": 1,
+"name": &"dañado",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ysnm7")
+}],
+"loop": 1,
+"name": &"invensible",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qsk1r")
+}],
+"loop": 1,
+"name": &"quieto",
+"speed": 5.0
+}]
 
 [node name="Enemigo2" type="CharacterBody2D" unique_id=372033936 groups=["enemigo2"]]
 collision_layer = 2
@@ -24,17 +66,18 @@ shape = SubResource("RectangleShape2D_7asr5")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=91302955]
 shape = SubResource("RectangleShape2D_obaep")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1242693768]
-position = Vector2(-5, 8)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_qsk1r")
-
 [node name="Marker2D" type="Marker2D" parent="." unique_id=142022598]
 position = Vector2(0, 100)
 rotation = 3.1415927
 
 [node name="dispararT" type="Timer" parent="." unique_id=656514386]
 wait_time = 2.5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=762638539]
+position = Vector2(0, 2)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_7asr5")
+animation = &"ataque"
 
 [connection signal="area_shape_exited" from="areaDeteccion" to="." method="_on_area_deteccion_area_shape_exited"]
 [connection signal="body_entered" from="areaDeteccion" to="." method="_on_area_deteccion_body_entered"]

@@ -8,11 +8,14 @@ extends CharacterBody2D
 # Ataque 2) lluvia de bombas: tira 3 o 4 bombas al mismo tiempo, caen todas a la par dejando un espacio en medio para pasar, se muestra en el medio y rie malevolamente antes de atacar.
 # Ataque 3) paraguas escudo: aparece y usa un paraguas para reflejar el ataque de pon, lo transforma en dos ataques.
 # Dr Medusa sera implementado como maquina de estados
-#region ariables
+#region Variables
 var tiempoAtaque: float = 11.0
 var velocidadBase: float = 333.3
 # Puedo ver temas de velocidad para ver que tan aleatorio aparece, o directamente crearlo en una posicion aleatoria.
 @onready var timerAtaque: Timer = $dispararT
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+var contar:int = 1
+var vidaEnemiga = 10
 # Actores guardados
 const ADVERTENCIA = preload("uid://dyd2pe77q3m21")
 const TENTACULO = preload("uid://c3yapkk2aa71y")
@@ -32,6 +35,7 @@ var estadoActual: estadoM = estadoM.nexo
 #region Basicos
 
 func _ready() -> void:
+	sprite.play("quieto")
 	Global.derrota.connect(Callable(self,"destruir"))
 	Global.victoria.connect(Callable(self,"destruir"))
 	# inicia el timer para los ataques y mueve a Dr Medusa
@@ -111,6 +115,7 @@ func ocultar():
 
 func ataque1():
 	await aparecer()
+	sprite.play("ataque")
 	crear_tentaculo()
 	await get_tree().create_timer(4.0).timeout
 	await ocultar()
@@ -127,14 +132,17 @@ func crear_tentaculo():
 
 func ataque2():
 	await aparecer()
+	sprite.play("risa")
 	await get_tree().create_timer(4.0).timeout
 	await ocultar()
 func ataque3():
 	await aparecer()
+	sprite.play("quieto")
 	await get_tree().create_timer(4.0).timeout
 	await ocultar()
 func emote():
 	await aparecer()
+	sprite.play("emote")
 	await get_tree().create_timer(4.0).timeout
 	await ocultar()
 #endregion
@@ -161,3 +169,16 @@ func todo():
 	velocity = Vector2(0,0)
 	velocity = Vector2(velocidadBase,0)
 #endregion
+
+
+func _on_area_deteccion_body_entered(body: Node2D) -> void:
+	if contar < vidaEnemiga:
+		contar += 1
+		sprite.play("dañado")
+		body.destruir()
+# Dudo un poco que sea de buena programacion destruir los dos objetos desde el script de uno... 
+	elif contar == vidaEnemiga:
+		if body.has_method("destruir"):
+			body.destruir()
+		Global.enemigo_destruido.emit(300)
+		destruir()

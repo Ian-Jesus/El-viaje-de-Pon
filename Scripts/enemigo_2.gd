@@ -3,24 +3,29 @@ extends CharacterBody2D
 const bala2 = preload("uid://pt5bc7kdwwm7")
 @onready var dispararT: Timer = $dispararT
 @onready var areaDeteccion: Area2D = $areaDeteccion
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 var contar:int = 1
 var oneshot:bool=true
 var vidaEnemiga = 5
 
 func _ready() -> void:
+	sprite.play("invensible")
 	Global.derrota.connect(Callable(self, "destruir"))
 	Global.victoria.connect(Callable(self, "destruir"))
 
 func cambio_de_patron():
+	sprite.play("quieto")
 	velocity = Vector2(150,0)
 	areaDeteccion.set_collision_mask_value(1,true) # para detectar la colision con la bala
 	dispararT.start()
 
 func disparo():
+	sprite.play("ataque")
+	await get_tree().create_timer(0.9).timeout
 	var b2 = bala2.instantiate()
 	b2.iniciar($Marker2D.global_position)
 	get_tree().root.add_child(b2)
-	
+	sprite.play("quieto")
 func iniciar(_position):
 	position = _position
 	velocity = Vector2(0,100)
@@ -42,7 +47,8 @@ func destruir():
 func _on_area_deteccion_body_entered(body: Node2D) -> void:
 	if contar < vidaEnemiga:
 		contar += 1
-		body.queue_free()
+		sprite.play("dañado")
+		body.destruir()
 # Dudo un poco que sea de buena programacion destruir los dos objetos desde el script de uno... 
 	elif contar == vidaEnemiga:
 		if body.has_method("destruir"):

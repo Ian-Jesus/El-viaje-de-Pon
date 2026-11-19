@@ -2,12 +2,59 @@
 
 [ext_resource type="Script" uid="uid://dj6l8qljk0ph" path="res://Scripts/dr_medusa.gd" id="1_ufglm"]
 [ext_resource type="Texture2D" uid="uid://17hrretnhp6a" path="res://Sprites/prototipos/drMedusa.png" id="2_ufglm"]
+[ext_resource type="Texture2D" uid="uid://7ofd6052sbxj" path="res://Sprites/prototipos/drMedusaAtacando.png" id="3_b5o22"]
+[ext_resource type="Texture2D" uid="uid://bc3dmtjtci5js" path="res://Sprites/prototipos/drMedusaDañado.png" id="4_01imf"]
+[ext_resource type="Texture2D" uid="uid://dmlts6mh8b6mq" path="res://Sprites/prototipos/drMedusaEmote.png" id="5_7vlhu"]
+[ext_resource type="Texture2D" uid="uid://cqr2yy2laa6gj" path="res://Sprites/prototipos/drMedusaRisa.png" id="6_04lsv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7asr5"]
 size = Vector2(160, 180)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obaep"]
 size = Vector2(160, 170)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7asr5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_b5o22")
+}],
+"loop": 1,
+"name": &"ataque",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_01imf")
+}],
+"loop": 1,
+"name": &"dañado",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_7vlhu")
+}],
+"loop": 1,
+"name": &"emote",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ufglm")
+}],
+"loop": 1,
+"name": &"quieto",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_04lsv")
+}],
+"loop": 1,
+"name": &"risa",
+"speed": 5.0
+}]
 
 [node name="DrMedusa" type="CharacterBody2D" unique_id=372033936 groups=["enemigo2"]]
 collision_layer = 2
@@ -16,7 +63,7 @@ script = ExtResource("1_ufglm")
 
 [node name="areaDeteccion" type="Area2D" parent="." unique_id=1615595]
 collision_layer = 0
-collision_mask = 8
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areaDeteccion" unique_id=1569007277]
 shape = SubResource("RectangleShape2D_7asr5")
@@ -25,6 +72,7 @@ shape = SubResource("RectangleShape2D_7asr5")
 shape = SubResource("RectangleShape2D_obaep")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1242693768]
+visible = false
 position = Vector2(-10, 10.000001)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_ufglm")
@@ -36,6 +84,11 @@ rotation = 3.1415927
 [node name="dispararT" type="Timer" parent="." unique_id=656514386]
 one_shot = true
 
-[connection signal="area_shape_exited" from="areaDeteccion" to="." method="_on_area_deteccion_area_shape_exited"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1660375272]
+position = Vector2(-10.999999, 0.99999994)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_7asr5")
+animation = &"quieto"
+
 [connection signal="body_entered" from="areaDeteccion" to="." method="_on_area_deteccion_body_entered"]
 [connection signal="timeout" from="dispararT" to="." method="_on_disparar_t_timeout"]

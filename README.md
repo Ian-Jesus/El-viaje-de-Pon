@@ -3,13 +3,29 @@ Mini Juego de Pon y Pin: te mueves con una nave de izquierda a derecha disparand
 
 # Sprites
 Como estamos cerca de la etapa final necesitamos sprites para los personajes, por suerte mi mujer es la animadora del corto de pon y pin así que tendremos sus modelos oficiales!!
+Inicialmente tendremos bocetos mios, para recordar los que tengo los marcaré "*(x)*" 
 Necesitamos sprites de:
-- Pon volando normal
-- Pon atacando (2 sprites)
-- Meteorito (2 o 3 sprites)
+- Pon
+	- normal *(x)*
+	- atancando
+	- dañado
+- Meteorito (2 o 3 sprites) *(x)* <-- solo uno
 - Secuaz de Medusa
-- El mismisimo Dr Medusa (3 sprites, volando, riendose, atacando)
-- Efectos especiales (ataque pon, ataque medusa y ataque secuaz pueden ser el mismo, ataque especial de medusa: golpe adelante y/o barrido)
+	- normal *(x)*
+	- atacando *(x)* (2 sprites)
+	- dañado *(x)*
+	- invulnerable *(x)*
+- Dr Medusa
+	- normal *(x)*
+	- atancando *(x)*
+	- dañado *(x)*
+	- riendose *(x)*
+	- emote *(x)*
+
+- Efectos especiales
+	- ataque pon *(x)*
+	- ataque secuaz *(x)*
+	- ataques medusa *(x)* <-- solo ataque tentaculo
 
 ## Errores actuales
  No hay errores
