@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cijiqea28tuva"]
 
-[ext_resource type="Script" uid="uid://d2154fnlg7abp" path="res://Scripts/hud.gd" id="1_4nel0"]
+[ext_resource type="Script" uid="uid://d2154fnlg7abp" path="res://Scripts/UI/hud.gd" id="1_4nel0"]
+[ext_resource type="Texture2D" uid="uid://lcce61tcg685" path="res://Sprites/prototipos/barraVidaPon10.png" id="2_v1vk6"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1808341901]
 script = ExtResource("1_4nel0")
@@ -50,6 +51,16 @@ autostart = true
 
 [node name="PeligroT" type="Timer" parent="." unique_id=1070822580]
 wait_time = 2.0
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1153162358]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -63.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_v1vk6")
 
 [connection signal="timeout" from="InicioTimer" to="." method="_on_inicio_timer_timeout"]
 [connection signal="timeout" from="TiempoJuego" to="." method="_on_tiempo_juego_timeout"]

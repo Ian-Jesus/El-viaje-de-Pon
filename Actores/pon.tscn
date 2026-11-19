@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cnb165qfdiie4" path="res://Sprites/PonVolando.0001.png" id="2_luh3v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obaep"]
-size = Vector2(50, 80)
+size = Vector2(60, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q5sfa"]
 size = Vector2(50, 70)

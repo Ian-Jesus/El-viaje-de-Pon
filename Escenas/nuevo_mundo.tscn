@@ -38,7 +38,7 @@ anchor_mode = 0
 position = Vector2(391, -90)
 
 [node name="Pon" parent="." unique_id=1275403122 instance=ExtResource("2_qeco3")]
-position = Vector2(397, 928)
+position = Vector2(391, 898)
 
 [node name="HUD" parent="." unique_id=1808341901 instance=ExtResource("3_qeco3")]
 

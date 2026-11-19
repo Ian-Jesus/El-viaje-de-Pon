@@ -7,14 +7,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7asr5"]
 size = Vector2(150, 1000)
 
-[node name="Tentanculo" type="Node2D" unique_id=1623238120]
+[node name="Tentaculo" type="CharacterBody2D" unique_id=1871316573]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_05e0r")
-
-[node name="Area2D" type="Area2D" parent="." unique_id=71737169]
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=887624451]
-shape = SubResource("RectangleShape2D_7asr5")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1366824884]
 visible = false
@@ -25,4 +21,5 @@ texture = ExtResource("1_qsrir")
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1382096067]
 texture = ExtResource("3_uqgc3")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=887624451]
+shape = SubResource("RectangleShape2D_7asr5")

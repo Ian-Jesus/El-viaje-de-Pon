@@ -20,9 +20,11 @@ func _physics_process(delta):
 			collision.get_collider().hit()
 
 func _on_area_deteccion_body_entered(body: Node2D) -> void:
-	Global.enemigo_destruido.emit(10)
+	
 	# Dudo un poco que sea de buena programacion destruir los dos objetos desde el script de uno... 
+	# Creo que ahora que llamamos a una funcion destruir esta bien, no?
 	if body.has_method("destruir"):
 			body.destruir()
+			Global.enemigo_destruido.emit(10)
 	destruir()
 	

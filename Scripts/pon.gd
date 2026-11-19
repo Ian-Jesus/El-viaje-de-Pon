@@ -24,4 +24,5 @@ func _physics_process(_delta):
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	Global.pon_daño.emit()
-	body.call_deferred("queue_free")
+	if body.has_method("destruir"):
+		body.destruir()

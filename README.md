@@ -47,6 +47,8 @@ Las áreas son para detectar daño y los personajes en si colisiones sin daño
 |BalaEnemigo2||X|||||||
 |Invocador||X|||||X||
 |Muros|||X||||||
+|DrMedusa||X|||||X||
+|Tentaculo||X|||||||
 ## Grupos
 **jugador:** Pon
 **enemigo:** Invocador
