@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cijiqea28tuva" path="res://Escenas/hud.tscn" id="3_qeco3"]
 [ext_resource type="PackedScene" uid="uid://dh5jvlvmxv0ei" path="res://Escenas/area_inmune.tscn" id="4_eia5m"]
 [ext_resource type="PackedScene" uid="uid://bjteyx1ut0pop" path="res://Actores/dr_medusa.tscn" id="5_ia3o7"]
+[ext_resource type="PackedScene" uid="uid://c8aqt8ixb7whn" path="res://Actores/bomba.tscn" id="6_33wj8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obaep"]
 size = Vector2(100, 2000)
@@ -38,7 +39,7 @@ anchor_mode = 0
 position = Vector2(391, -90)
 
 [node name="Pon" parent="." unique_id=1275403122 instance=ExtResource("2_qeco3")]
-position = Vector2(391, 898)
+position = Vector2(391, 803)
 
 [node name="HUD" parent="." unique_id=1808341901 instance=ExtResource("3_qeco3")]
 
@@ -47,3 +48,6 @@ position = Vector2(385, 0)
 
 [node name="DrMedusa" parent="." unique_id=372033936 instance=ExtResource("5_ia3o7")]
 position = Vector2(114, -102)
+
+[node name="bomba" parent="." unique_id=1480356840 instance=ExtResource("6_33wj8")]
+position = Vector2(383, -1080)

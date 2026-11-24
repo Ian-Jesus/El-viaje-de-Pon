@@ -1,11 +1,12 @@
 extends CharacterBody2D
 var velocidad = 350
 
-func iniciar(_position):
+func iniciar(_position,_rotation):
 	Global.derrota.connect(Callable(self, "destruir"))
 	Global.victoria.connect(Callable(self, "destruir"))
 	position = _position
-	velocity = Vector2(0, velocidad)
+	rotation = _rotation
+	velocity = Vector2(0, -velocidad).rotated(rotation)
 
 func destruir():
 	queue_free()

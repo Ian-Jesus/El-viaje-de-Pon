@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dp2xyr8csgs1"]
+
+[ext_resource type="Script" uid="uid://mvofuis1mafj" path="res://Scripts/paraguas.gd" id="1_gv580"]
+[ext_resource type="Texture2D" uid="uid://dviafv38v6kss" path="res://Sprites/prototipos/paraguas.png" id="2_c3faq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vpex2"]
+radius = 80.0
+
+[node name="Paraguas" type="Area2D" unique_id=689243299]
+collision_layer = 0
+script = ExtResource("1_gv580")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1369652356]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_c3faq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=152648140]
+position = Vector2(-3, -12)
+shape = SubResource("CircleShape2D_vpex2")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1714819429]
+position = Vector2(0, 76)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,10 +1,33 @@
 [gd_scene format=3 uid="uid://cijiqea28tuva"]
 
 [ext_resource type="Script" uid="uid://d2154fnlg7abp" path="res://Scripts/UI/hud.gd" id="1_4nel0"]
-[ext_resource type="Texture2D" uid="uid://lcce61tcg685" path="res://Sprites/prototipos/barraVidaPon10.png" id="2_v1vk6"]
+[ext_resource type="Texture2D" uid="uid://dwrrhwyiap6xd" path="res://Sprites/prototipos/barraVidaPon/barraVidaPon0.png" id="2_wttlh"]
+[ext_resource type="Texture2D" uid="uid://8hg0o1804w4h" path="res://Sprites/prototipos/barraVidaPon/barraVidaPon1.png" id="3_1iyui"]
+[ext_resource type="Texture2D" uid="uid://duh1dhs032nwf" path="res://Sprites/prototipos/barraVidaPon/barraVidaPon10.png" id="3_2in0g"]
+[ext_resource type="Texture2D" uid="uid://f3mwew8mbl86" path="res://Sprites/prototipos/barraVidaDrMedusa/barraVidaDrMedusa10.png" id="3_5x6hg"]
+[ext_resource type="Texture2D" uid="uid://bspt4c0i71vcd" path="res://Sprites/prototipos/barraVidaPon/barraVidaPon2.png" id="4_he5oc"]
+[ext_resource type="Texture2D" uid="uid://dmcioep32mr3v" path="res://Sprites/prototipos/barraVidaPon/barraVidaPon3.png" id="5_0p20x"]
+[ext_resource type="Texture2D" uid="uid://cas6krb2nwy2v" path="res://Sprites/prototipos/barraVidaPon/barraVidaPon4.png" id="6_tbrkm"]
+[ext_resource type="Texture2D" uid="uid://cso3gwlqhkgt6" path="res://Sprites/prototipos/barraVidaPon/barraVidaPon5.png" id="7_lqiex"]
+[ext_resource type="Texture2D" uid="uid://cw2nj1xbukhf2" path="res://Sprites/prototipos/barraVidaPon/barraVidaPon6.png" id="8_tctaf"]
+[ext_resource type="Texture2D" uid="uid://dgkue88ilwd4p" path="res://Sprites/prototipos/barraVidaPon/barraVidaPon7.png" id="9_3lm4k"]
+[ext_resource type="Texture2D" uid="uid://5vraoebdl13o" path="res://Sprites/prototipos/barraVidaPon/barraVidaPon8.png" id="10_1663e"]
+[ext_resource type="Texture2D" uid="uid://dkakrsn88t6dh" path="res://Sprites/prototipos/barraVidaPon/barraVidaPon9.png" id="11_h428n"]
+[ext_resource type="Texture2D" uid="uid://cyvahpqgxrk" path="res://Sprites/prototipos/barraVidaDrMedusa/barraVidaDrMedusa0.png" id="13_uq3vo"]
+[ext_resource type="Texture2D" uid="uid://c1hpfaryq84bj" path="res://Sprites/prototipos/barraVidaDrMedusa/barraVidaDrMedusa1.png" id="14_6lb5h"]
+[ext_resource type="Texture2D" uid="uid://b5oek8tyf3eme" path="res://Sprites/prototipos/barraVidaDrMedusa/barraVidaDrMedusa2.png" id="15_i528q"]
+[ext_resource type="Texture2D" uid="uid://dtghe2ai0ymc7" path="res://Sprites/prototipos/barraVidaDrMedusa/barraVidaDrMedusa3.png" id="16_axtw5"]
+[ext_resource type="Texture2D" uid="uid://ce8e4v8q51w1i" path="res://Sprites/prototipos/barraVidaDrMedusa/barraVidaDrMedusa4.png" id="17_juba5"]
+[ext_resource type="Texture2D" uid="uid://vrilahdpeau" path="res://Sprites/prototipos/barraVidaDrMedusa/barraVidaDrMedusa5.png" id="18_lgmgk"]
+[ext_resource type="Texture2D" uid="uid://b8288bkyk6p0u" path="res://Sprites/prototipos/barraVidaDrMedusa/barraVidaDrMedusa6.png" id="19_tuda1"]
+[ext_resource type="Texture2D" uid="uid://cq2u7rbf7ebot" path="res://Sprites/prototipos/barraVidaDrMedusa/barraVidaDrMedusa7.png" id="20_gnyan"]
+[ext_resource type="Texture2D" uid="uid://dirdwe4kuaqn7" path="res://Sprites/prototipos/barraVidaDrMedusa/barraVidaDrMedusa8.png" id="21_c3md3"]
+[ext_resource type="Texture2D" uid="uid://dfia360u6ky03" path="res://Sprites/prototipos/barraVidaDrMedusa/barraVidaDrMedusa9.png" id="22_dgm3n"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1808341901]
 script = ExtResource("1_4nel0")
+bvp = [ExtResource("2_wttlh"), ExtResource("3_1iyui"), ExtResource("4_he5oc"), ExtResource("5_0p20x"), ExtResource("6_tbrkm"), ExtResource("7_lqiex"), ExtResource("8_tctaf"), ExtResource("9_3lm4k"), ExtResource("10_1663e"), ExtResource("11_h428n"), ExtResource("3_2in0g")]
+bvdm = Array[Resource]([ExtResource("13_uq3vo"), ExtResource("14_6lb5h"), ExtResource("15_i528q"), ExtResource("16_axtw5"), ExtResource("17_juba5"), ExtResource("18_lgmgk"), ExtResource("19_tuda1"), ExtResource("20_gnyan"), ExtResource("21_c3md3"), ExtResource("22_dgm3n"), ExtResource("3_5x6hg")])
 
 [node name="Puntuacion" type="Label" parent="." unique_id=2035269953]
 anchors_preset = 5
@@ -46,21 +69,33 @@ autowrap_mode = 3
 [node name="InicioTimer" type="Timer" parent="." unique_id=702841241]
 
 [node name="TiempoJuego" type="Timer" parent="." unique_id=951096571]
-wait_time = 40.0
+wait_time = 120.0
 autostart = true
 
 [node name="PeligroT" type="Timer" parent="." unique_id=1070822580]
 wait_time = 2.0
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1153162358]
+[node name="vidaDrMedusa" type="TextureRect" parent="." unique_id=397172418]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -63.0
+offset_top = -128.0
+offset_bottom = -65.0
 grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("2_v1vk6")
+texture = ExtResource("3_5x6hg")
+
+[node name="vidaPon" type="TextureRect" parent="." unique_id=1335983770]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -65.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_2in0g")
 
 [connection signal="timeout" from="InicioTimer" to="." method="_on_inicio_timer_timeout"]
 [connection signal="timeout" from="TiempoJuego" to="." method="_on_tiempo_juego_timeout"]

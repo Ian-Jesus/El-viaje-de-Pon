@@ -11,32 +11,30 @@ extends CanvasLayer
 @onready var puntuacion: Label = $Puntuacion
 @onready var tiempoE: Label = $Tiempo
 #Variables
-var segAumentaNivel = [10,20,60,120,180]
+var segAumentaNivel = [10,20,60,100,120,180]
 var nivel = 0
 var cont = 0
 var punt = 0
 @export var vida = 10
+var vidaDrMedusa = 10
 @export var condicionVictoria = 100
 var unicavez:bool=true
 var unavez:bool=true
 # Otros
-@onready var barraVida: TextureRect = $TextureRect
-# Preloads
-const bv0 = preload("uid://bby8mg2nlfqjb")
-const bv1 = preload("uid://dxrcae1litxj5")
-const bv2 = preload("uid://deru1p5ghu4j4")
-const bv3 = preload("uid://ciqfw652dkm8v")
-const bv4 = preload("uid://dwfw6umpnk16r")
-const bv5 = preload("uid://ccrrbnb86ciat")
-const bv6 = preload("uid://dx2qubel5a567")
-const bv7 = preload("uid://drbmyxafwmptt")
-const bv8 = preload("uid://4s8fa56i2okd")
-const bv9 = preload("uid://ygq8laa04hrp")
-const bv10 = preload("uid://lcce61tcg685")
+@onready var barraVida: TextureRect = $vidaPon
+@onready var barraVidaDrMedusa: TextureRect = $vidaDrMedusa
 
+# Preloads
+@export var bvp: Array[Resource] = []
+@export var bvdm: Array[Resource] = []
 func _ready() -> void:
+	Global.juego_terminado = false
+	Global.puntuacion = 0
+	punt = 0
+	puntuacion.text = str(punt)
 	_iniciarTimer()
-	Global.enemigo_destruido.connect(Callable(self,"_enemigo_destruido"),10)
+	Global.dañoDrMedusa.connect(Callable(self,"_controlador_barra_de_vida_dr_medusa"))
+	Global.enemigo_destruido.connect(Callable(self,"_enemigo_destruido"))
 	Global.pon_daño.connect(Callable(self,"_pon_recibe_daño"))
 
 func _process(_delta: float) -> void:
@@ -62,10 +60,10 @@ func _cronometro():
 func _mostrar_dificultad_aumentada():
 	mensaje.text='Peligro!!!'
 	peligroT.start()
-# esta condicion de victoria es por tiempo
-func _condicion_victoria_t():
+# esta condicion de derrota es por tiempo
+func _condicion_derrota_t():
 	Global.puntuacion = punt
-	Global.victoria.emit()
+	Global.derrota.emit()
 
 # esta condicion de victoria es por puntos
 func _condicion_victoria_p():
@@ -81,14 +79,14 @@ func _iniciarTimer():
 
 func _pon_recibe_daño():
 	vida -= 1
-	_controlador_barra_de_vida()
+	_controlador_barra_de_vida_pon()
 	if vida <= 0:
 		Global.puntuacion = punt
 		Global.derrota.emit()
 
-func _enemigo_destruido(puntos:int):
-	punt+= puntos
-	puntuacion.text= str(punt)
+func _enemigo_destruido(_puntos:int):
+	punt = Global.puntuacion
+	puntuacion.text = str(punt)
 
 func _on_inicio_timer_timeout() -> void:
 	cont+=1
@@ -107,23 +105,34 @@ func _on_inicio_timer_timeout() -> void:
 		6:
 			$InicioTimer.stop()
 
-func _controlador_barra_de_vida():
-	# tambien podria haber usado un vector con los preloads, y moverme una posición cada vez
+func _controlador_barra_de_vida_pon():
 	match vida:
-		0:barraVida.texture = bv0
-		1:barraVida.texture = bv1
-		2:barraVida.texture = bv2
-		3:barraVida.texture = bv3
-		4:barraVida.texture = bv4
-		5:barraVida.texture = bv5
-		6:barraVida.texture = bv6
-		7:barraVida.texture = bv7
-		8:barraVida.texture = bv8
-		9:barraVida.texture = bv9
-		10:barraVida.texture = bv10
+		0:barraVida.texture = bvp[0]
+		1:barraVida.texture = bvp[1]
+		2:barraVida.texture = bvp[2]
+		3:barraVida.texture = bvp[3]
+		4:barraVida.texture = bvp[4]
+		5:barraVida.texture = bvp[5]
+		6:barraVida.texture = bvp[6]
+		7:barraVida.texture = bvp[7]
+		8:barraVida.texture = bvp[8]
+		9:barraVida.texture = bvp[9]
+
+func _controlador_barra_de_vida_dr_medusa(vidaDrMedusa):
+	match vidaDrMedusa:
+		0:barraVidaDrMedusa.texture = bvdm[0]
+		1:barraVidaDrMedusa.texture = bvdm[1]
+		2:barraVidaDrMedusa.texture = bvdm[2]
+		3:barraVidaDrMedusa.texture = bvdm[3]
+		4:barraVidaDrMedusa.texture = bvdm[4]
+		5:barraVidaDrMedusa.texture = bvdm[5]
+		6:barraVidaDrMedusa.texture = bvdm[6]
+		7:barraVidaDrMedusa.texture = bvdm[7]
+		8:barraVidaDrMedusa.texture = bvdm[8]
+		9:barraVidaDrMedusa.texture = bvdm[9]
 
 func _on_tiempo_juego_timeout() -> void:
-	_condicion_victoria_t()
+	_condicion_derrota_t()
 
 func _on_peligro_t_timeout() -> void:
 	mensaje.text=''

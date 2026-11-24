@@ -23,7 +23,7 @@ func disparo():
 	sprite.play("ataque")
 	await get_tree().create_timer(0.9).timeout
 	var b2 = bala2.instantiate()
-	b2.iniciar($Marker2D.global_position)
+	b2.iniciar($Marker2D.global_position,PI)
 	get_tree().root.add_child(b2)
 	sprite.play("quieto")
 func iniciar(_position):

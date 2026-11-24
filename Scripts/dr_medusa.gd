@@ -9,16 +9,20 @@ extends CharacterBody2D
 # Ataque 3) paraguas escudo: aparece y usa un paraguas para reflejar el ataque de pon, lo transforma en dos ataques.
 # Dr Medusa sera implementado como maquina de estados
 #region Variables
-var tiempoAtaque: float = 11.0
+
+var minTiempo = 7.0
+var maxTiempo = 8.0
 var velocidadBase: float = 333.3
 # Puedo ver temas de velocidad para ver que tan aleatorio aparece, o directamente crearlo en una posicion aleatoria.
 @onready var timerAtaque: Timer = $dispararT
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 var contar:int = 1
-var vidaEnemiga = 10
+var vida = 10
 # Actores guardados
 const ADVERTENCIA = preload("uid://dyd2pe77q3m21")
 const TENTACULO = preload("uid://c3yapkk2aa71y")
+const BOMBA = preload("uid://c8aqt8ixb7whn")
+const PARAGUAS = preload("uid://dp2xyr8csgs1")
 
 enum estadoM {
 	nexo,
@@ -37,12 +41,11 @@ var estadoActual: estadoM = estadoM.nexo
 func _ready() -> void:
 	sprite.play("quieto")
 	Global.derrota.connect(Callable(self,"destruir"))
-	Global.victoria.connect(Callable(self,"destruir"))
 	# inicia el timer para los ataques y mueve a Dr Medusa
 	_iniciar()
 func _iniciar():
 	velocity = Vector2(velocidadBase,0)
-	timerAtaque.wait_time = tiempoAtaque
+	timerAtaque.wait_time = randf_range(minTiempo, maxTiempo)
 	timerAtaque.start()
 
 func _physics_process(delta):
@@ -53,6 +56,16 @@ func _physics_process(delta):
 			collision.get_collider().hit()
 
 func destruir():
+	if is_queued_for_deletion():
+		return
+	queue_free()
+
+func morir():
+	if is_queued_for_deletion():
+		return
+	Global.dañoDrMedusa.emit(0)
+	Global.enemigo_destruido.emit(300)
+	Global.victoria.emit()
 	queue_free()
 
 func volver_nexo():
@@ -133,13 +146,29 @@ func crear_tentaculo():
 func ataque2():
 	await aparecer()
 	sprite.play("risa")
+	crear_bomba()
 	await get_tree().create_timer(4.0).timeout
 	await ocultar()
+
+func crear_bomba():
+	var b = BOMBA.instantiate()
+	b.iniciar(global_position)
+	get_tree().root.add_child(b)
+
 func ataque3():
 	await aparecer()
 	sprite.play("quieto")
+	crear_paraguas()
 	await get_tree().create_timer(4.0).timeout
 	await ocultar()
+
+func crear_paraguas():
+	var p = PARAGUAS.instantiate()
+	add_child(p)
+	p.iniciar()
+	await get_tree().create_timer(4.0).timeout
+	p.destruir()
+
 func emote():
 	await aparecer()
 	sprite.play("emote")
@@ -150,9 +179,9 @@ func emote():
 #region Otros
 
 func _on_disparar_t_timeout() -> void:
-	estadoActual = estadoM.ataque1#cambiar_actual()
+	cambiar_actual()
 	await cambio_estado()
-	timerAtaque.wait_time = tiempoAtaque
+	timerAtaque.wait_time = randf_range(minTiempo, maxTiempo)
 	timerAtaque.start()
 
 func todo():
@@ -172,13 +201,13 @@ func todo():
 
 
 func _on_area_deteccion_body_entered(body: Node2D) -> void:
-	if contar < vidaEnemiga:
+	if contar < vida:
+		Global.dañoDrMedusa.emit(vida - contar)
 		contar += 1
 		sprite.play("dañado")
-		body.destruir()
-# Dudo un poco que sea de buena programacion destruir los dos objetos desde el script de uno... 
-	elif contar == vidaEnemiga:
 		if body.has_method("destruir"):
 			body.destruir()
-		Global.enemigo_destruido.emit(300)
-		destruir()
+	elif contar == vida:
+		if body.has_method("destruir"):
+			body.destruir()
+		morir()
